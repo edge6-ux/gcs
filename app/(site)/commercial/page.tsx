@@ -48,18 +48,25 @@ const facilityTypes = [
 
 const steps = [
   {
-    title: "Tell us about your facility",
+    title: "1. Tell us about your building",
     description: "Square footage, frequency, and any specific requirements.",
+    iconSrc: "/commercial-step-building.png",
+    iconAlt: "Building icon",
   },
   {
-    title: "We walk the space",
+    title: "2. We walk the space",
     description:
       "In person or virtually — we confirm scope and provide your final rate.",
+    iconSrc: "/commercial-step-walk.png",
+    iconAlt: "Clipboard with checkmark icon",
   },
   {
-    title: "We build a schedule around you",
+    title: "3. We build a schedule around you",
     description:
       "Consistent service on the days and hours that work for your business.",
+    iconSrc: "/commercial-step-schedule.png",
+    iconAlt: "Calendar and clock icon for scheduling",
+    iconClassName: "h-[52px] w-[52px]",
   },
 ];
 
@@ -222,10 +229,24 @@ export default function CommercialPage() {
           <div className="mt-14 grid gap-10 md:grid-cols-3 md:gap-8">
             {steps.map((step, index) => (
               <div key={step.title} className="text-center md:text-left">
-                <span className="font-display text-[36px] text-gold">
-                  {index + 1}
-                </span>
-                <h3 className="mt-2 font-display text-[16px] font-medium text-ink">
+                <div className="mx-auto mb-3 flex h-[55px] items-end justify-center md:mx-0 md:justify-start">
+                  {"iconSrc" in step && step.iconSrc ? (
+                    <img
+                      src={step.iconSrc}
+                      alt={step.iconAlt ?? ""}
+                      className={`brightness-0 ${
+                        "iconClassName" in step && step.iconClassName
+                          ? step.iconClassName
+                          : "h-10 w-10"
+                      }`}
+                    />
+                  ) : (
+                    <span className="font-display text-[36px] leading-none text-gold/40">
+                      {index + 1}
+                    </span>
+                  )}
+                </div>
+                <h3 className="font-display text-[16px] font-medium text-ink">
                   {step.title}
                 </h3>
                 <p className="mt-2 font-body text-[14px] leading-relaxed text-body">
