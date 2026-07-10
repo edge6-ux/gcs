@@ -97,8 +97,8 @@ function freqLabelCommercial(value: CommercialSubmission["frequency"]) {
   }
 }
 
-function walkthroughLabel(value: "virtual" | "in-person") {
-  return value === "virtual" ? "Virtual walkthrough" : "In-person walkthrough";
+function walkthroughLabel() {
+  return "In-person walkthrough";
 }
 
 export function calculateEstimateFromPayload(payload: SubmitEstimatePayload): number {
@@ -149,7 +149,7 @@ export function buildServiceDetailRows(
       { label: "Bathrooms", value: data.bathrooms },
       { label: "Square footage", value: data.sqft },
       { label: "What matters most", value: motivationLabel(data) },
-      { label: "Walkthrough preference", value: walkthroughLabel(data.walkthrough) },
+      { label: "Walkthrough", value: walkthroughLabel() },
     ];
 
     if (data.deepCleanNotes.trim()) {
@@ -175,7 +175,7 @@ export function buildServiceDetailRows(
             ? `Specific products — ${data.suppliesNotes}`
             : "Standard supplies",
       },
-      { label: "Walkthrough preference", value: walkthroughLabel(data.walkthrough) },
+      { label: "Walkthrough", value: walkthroughLabel() },
     ];
 
     return rows;

@@ -21,7 +21,6 @@ type ResidentialData = {
   sqft: string;
   motivation: "" | "no-time" | "unable" | "higher-standard" | "other";
   motivationOther: string;
-  walkthrough: "" | "virtual" | "in-person";
   name: string;
   email: string;
   phone: string;
@@ -34,7 +33,6 @@ type CommercialData = {
   frequency: "" | "oneTime" | "weekly" | "biweekly" | "monthly" | "nightly";
   supplies: "" | "standard" | "specific";
   suppliesNotes: string;
-  walkthrough: "" | "virtual" | "in-person";
   name: string;
   company: string;
   email: string;
@@ -52,7 +50,6 @@ const initialResidential: ResidentialData = {
   sqft: "",
   motivation: "",
   motivationOther: "",
-  walkthrough: "",
   name: "",
   email: "",
   phone: "",
@@ -65,7 +62,6 @@ const initialCommercial: CommercialData = {
   frequency: "",
   supplies: "",
   suppliesNotes: "",
-  walkthrough: "",
   name: "",
   company: "",
   email: "",
@@ -234,7 +230,7 @@ function ConfirmationScreen({ name }: { name: string }) {
 
 export default function EstimateForm({ variant }: { variant: Variant }) {
   const isResidential = variant === "residential";
-  const formSteps = 6;
+  const formSteps = 5;
   const totalSteps = formSteps + 1;
 
   const [step, setStep] = useState(0);
@@ -282,8 +278,6 @@ export default function EstimateForm({ variant }: { variant: Variant }) {
               residential.motivationOther.trim() !== "")
           );
         case 4:
-          return residential.walkthrough !== "";
-        case 5:
           return (
             residential.name.trim() !== "" &&
             residential.email.trim() !== "" &&
@@ -309,8 +303,6 @@ export default function EstimateForm({ variant }: { variant: Variant }) {
             commercial.suppliesNotes.trim() !== "")
         );
       case 4:
-        return commercial.walkthrough !== "";
-      case 5:
         return (
           commercial.name.trim() !== "" &&
           commercial.company.trim() !== "" &&
@@ -415,9 +407,6 @@ export default function EstimateForm({ variant }: { variant: Variant }) {
     }
   };
 
-  const walkthroughLabel = (value: "virtual" | "in-person" | "") =>
-    value === "virtual" ? "Virtual walkthrough" : value === "in-person" ? "In-person walkthrough" : "";
-
   const goNext = () => {
     if (canProceed && step < totalSteps - 1) {
       setStep((s) => s + 1);
@@ -437,8 +426,7 @@ export default function EstimateForm({ variant }: { variant: Variant }) {
       if (
         !residential.serviceType ||
         !residential.frequency ||
-        !residential.motivation ||
-        !residential.walkthrough
+        !residential.motivation
       ) {
         return null;
       }
@@ -455,7 +443,7 @@ export default function EstimateForm({ variant }: { variant: Variant }) {
           sqft: residential.sqft,
           motivation: residential.motivation,
           motivationOther: residential.motivationOther,
-          walkthrough: residential.walkthrough,
+          walkthrough: "in-person",
           name: residential.name,
           email: residential.email,
           phone: residential.phone,
@@ -468,8 +456,7 @@ export default function EstimateForm({ variant }: { variant: Variant }) {
     if (
       !commercial.facilityType ||
       !commercial.frequency ||
-      !commercial.supplies ||
-      !commercial.walkthrough
+      !commercial.supplies
     ) {
       return null;
     }
@@ -482,7 +469,7 @@ export default function EstimateForm({ variant }: { variant: Variant }) {
         frequency: commercial.frequency,
         supplies: commercial.supplies,
         suppliesNotes: commercial.suppliesNotes,
-        walkthrough: commercial.walkthrough,
+        walkthrough: "in-person",
         name: commercial.name,
         company: commercial.company,
         email: commercial.email,
@@ -531,7 +518,6 @@ export default function EstimateForm({ variant }: { variant: Variant }) {
         "How often would you like service?",
         "Tell us about your home",
         "What matters most to you?",
-        "Walkthrough preference",
         "How can we reach you?",
         "Review your estimate",
       ][step]
@@ -540,7 +526,6 @@ export default function EstimateForm({ variant }: { variant: Variant }) {
         "How large is the space?",
         "How often do you need cleaning?",
         "Supplies & products",
-        "Walkthrough preference",
         "How can we reach you?",
         "Review your quote",
       ][step];
@@ -551,8 +536,7 @@ export default function EstimateForm({ variant }: { variant: Variant }) {
         "Recurring visits include a modest placeholder discount.",
         "Rough numbers are fine — we'll confirm details on your walkthrough.",
         "This helps us understand what you're looking for.",
-        "We'll confirm scope before your first visit.",
-        "We'll follow up to schedule your walkthrough.",
+        "We'll follow up to schedule your in-person walkthrough.",
         "Make sure everything looks right before scheduling.",
       ][step]
     : [
@@ -560,8 +544,7 @@ export default function EstimateForm({ variant }: { variant: Variant }) {
         "Your final rate is confirmed after a walkthrough.",
         "Frequency affects your placeholder estimate.",
         "We bring standard supplies unless you specify otherwise.",
-        "We'll confirm scope before your first visit.",
-        "We'll follow up to schedule your walkthrough.",
+        "We'll follow up to schedule your in-person walkthrough.",
         "Make sure everything looks right before scheduling.",
       ][step];
 
@@ -729,25 +712,6 @@ export default function EstimateForm({ variant }: { variant: Variant }) {
         )}
 
         {isResidential && step === 4 && (
-          <div className="grid gap-3">
-            <SelectCard
-              variant={variant}
-              selected={residential.walkthrough === "virtual"}
-              onClick={() => setR("walkthrough", "virtual")}
-            >
-              Virtual walkthrough
-            </SelectCard>
-            <SelectCard
-              variant={variant}
-              selected={residential.walkthrough === "in-person"}
-              onClick={() => setR("walkthrough", "in-person")}
-            >
-              In-person walkthrough
-            </SelectCard>
-          </div>
-        )}
-
-        {isResidential && step === 5 && (
           <>
             <div>
               <FieldLabel>Name</FieldLabel>
@@ -882,25 +846,6 @@ export default function EstimateForm({ variant }: { variant: Variant }) {
         )}
 
         {!isResidential && step === 4 && (
-          <div className="grid gap-3">
-            <SelectCard
-              variant={variant}
-              selected={commercial.walkthrough === "virtual"}
-              onClick={() => setC("walkthrough", "virtual")}
-            >
-              Virtual walkthrough
-            </SelectCard>
-            <SelectCard
-              variant={variant}
-              selected={commercial.walkthrough === "in-person"}
-              onClick={() => setC("walkthrough", "in-person")}
-            >
-              In-person walkthrough
-            </SelectCard>
-          </div>
-        )}
-
-        {!isResidential && step === 5 && (
           <>
             <div>
               <FieldLabel>Name</FieldLabel>
@@ -990,10 +935,7 @@ export default function EstimateForm({ variant }: { variant: Variant }) {
                 <ReviewSection title="What matters most" stepIndex={3} onEdit={setStep}>
                   <ReviewRow label="Priority" value={motivationLabel(residential.motivation)} />
                 </ReviewSection>
-                <ReviewSection title="Walkthrough" stepIndex={4} onEdit={setStep}>
-                  <ReviewRow label="Preference" value={walkthroughLabel(residential.walkthrough)} />
-                </ReviewSection>
-                <ReviewSection title="Contact" stepIndex={5} onEdit={setStep}>
+                <ReviewSection title="Contact" stepIndex={4} onEdit={setStep}>
                   <ReviewRow label="Name" value={residential.name} />
                   <ReviewRow label="Email" value={residential.email} />
                   <ReviewRow label="Phone" value={residential.phone} />
@@ -1024,10 +966,7 @@ export default function EstimateForm({ variant }: { variant: Variant }) {
                     }
                   />
                 </ReviewSection>
-                <ReviewSection title="Walkthrough" stepIndex={4} onEdit={setStep}>
-                  <ReviewRow label="Preference" value={walkthroughLabel(commercial.walkthrough)} />
-                </ReviewSection>
-                <ReviewSection title="Contact" stepIndex={5} onEdit={setStep}>
+                <ReviewSection title="Contact" stepIndex={4} onEdit={setStep}>
                   <ReviewRow label="Name" value={commercial.name} />
                   <ReviewRow label="Company" value={commercial.company} />
                   <ReviewRow label="Email" value={commercial.email} />
