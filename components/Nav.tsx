@@ -11,7 +11,7 @@ export default function Nav() {
       <div className="flex items-center justify-between">
         <Link
           href="/"
-          className="group flex items-baseline gap-2 hover:text-gold transition-colors"
+          className="group flex min-w-0 max-w-[calc(100%-2.5rem)] flex-wrap items-baseline gap-x-2 gap-y-0.5 hover:text-gold transition-colors"
         >
           <span className="font-display text-[15px] font-medium tracking-[0.12em] text-ink group-hover:text-gold">
             GILLELAND

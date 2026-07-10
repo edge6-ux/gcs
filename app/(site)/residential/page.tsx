@@ -4,14 +4,26 @@ const trustPoints = [
   {
     label: "No contracts",
     description: "Cancel or reschedule anytime, no penalties.",
+    iconSrc: "/residential-icon-no-contracts.png",
+    iconAlt: "Document with cancel symbol — no contracts",
   },
   {
     label: "Same trusted team",
     description: "You'll know who's coming, every time.",
+    iconSrc: "/residential-icon-team.png",
+    iconAlt: "Team of three people icon",
   },
   {
     label: "Satisfaction guaranteed",
     description: "Not happy? We'll make it right.",
+    iconSrc: "/residential-icon-satisfaction.png",
+    iconAlt: "Satisfaction guaranteed badge with checkmark",
+  },
+  {
+    label: "Flexible scheduling",
+    description: "Cleaning that fits your calendar — not the other way around.",
+    iconSrc: "/residential-icon-scheduling.png",
+    iconAlt: "Calendar and clock icon for flexible scheduling",
   },
 ];
 
@@ -44,18 +56,26 @@ const services = [
 
 const steps = [
   {
-    title: "Tell us about your space",
+    title: "1. Tell us about your space",
     description:
       "A few quick details: home size, what you need, how often.",
+    iconSrc: "/residential-step-space.png",
+    iconAlt: "House with magnifying glass icon",
+    iconClassName: "h-[55px] w-[55px]",
   },
   {
-    title: "We confirm the details",
+    title: "2. We confirm the details",
     description:
       "A quick call or virtual walkthrough — whatever's easiest for you.",
+    iconSrc: "/residential-step-confirm.png",
+    iconAlt: "Clipboard with checkmark icon",
   },
   {
-    title: "We show up and handle it",
+    title: "3. We show up and handle it",
     description: "Same trusted team, every visit, done right.",
+    iconSrc: "/residential-step-showup.png",
+    iconAlt: "Cleaning supplies icon — spray bottle and cloth",
+    iconClassName: "h-[52px] w-[52px]",
   },
 ];
 
@@ -102,9 +122,16 @@ export default function ResidentialPage() {
 
       {/* Section B — Trust strip */}
       <section className="bg-stone py-10 px-6 md:px-12">
-        <div className="mx-auto grid max-w-5xl gap-8 md:grid-cols-3 md:gap-6">
+        <div className="mx-auto grid max-w-5xl gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-x-14 lg:gap-y-8">
           {trustPoints.map((point) => (
             <div key={point.label} className="text-center md:text-left">
+              {"iconSrc" in point && point.iconSrc && (
+                <img
+                  src={point.iconSrc}
+                  alt={point.iconAlt ?? ""}
+                  className="mx-auto mb-3 h-10 w-10 brightness-0 md:mx-0"
+                />
+              )}
               <p className="font-body text-[14px] font-medium text-ink">
                 {point.label}
               </p>
@@ -142,7 +169,7 @@ export default function ResidentialPage() {
                     aria-hidden="true"
                   />
                 </div>
-                <div className="p-8">
+                <div className="p-6 md:p-8">
                   <span className="font-body text-[11px] font-semibold uppercase tracking-[0.14em] text-gold">
                     {service.label}
                   </span>
@@ -184,10 +211,24 @@ export default function ResidentialPage() {
           <div className="mt-14 grid gap-10 md:grid-cols-3 md:gap-8">
             {steps.map((step, index) => (
               <div key={step.title} className="text-center md:text-left">
-                <span className="font-display text-[36px] text-gold/40">
-                  {index + 1}
-                </span>
-                <h3 className="mt-2 font-display text-[16px] font-medium text-ink">
+                <div className="mx-auto mb-3 flex h-[55px] items-end justify-center md:mx-0 md:justify-start">
+                  {"iconSrc" in step && step.iconSrc ? (
+                    <img
+                      src={step.iconSrc}
+                      alt={step.iconAlt ?? ""}
+                      className={`brightness-0 ${
+                        "iconClassName" in step && step.iconClassName
+                          ? step.iconClassName
+                          : "h-10 w-10"
+                      }`}
+                    />
+                  ) : (
+                    <span className="font-display text-[36px] leading-none text-gold/40">
+                      {index + 1}
+                    </span>
+                  )}
+                </div>
+                <h3 className="font-display text-[16px] font-medium text-ink">
                   {step.title}
                 </h3>
                 <p className="mt-2 font-body text-[14px] leading-relaxed text-body">
