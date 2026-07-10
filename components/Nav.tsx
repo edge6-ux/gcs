@@ -9,7 +9,6 @@ export default function Nav() {
   return (
     <header className="site-nav sticky top-0 z-50 shrink-0 border-b border-line bg-cream/95 px-6 py-5 backdrop-blur-sm md:px-12">
       <div className="flex items-center justify-between">
-        {/* Wordmark */}
         <Link
           href="/"
           className="group flex items-baseline gap-2 hover:text-gold transition-colors"
@@ -25,16 +24,10 @@ export default function Nav() {
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-8">
           <Link
-            href="/services"
+            href="/about"
             className="font-body text-[13px] text-taupe hover:text-ink transition-colors"
           >
-            Services
-          </Link>
-          <Link
-            href="/story"
-            className="font-body text-[13px] text-taupe hover:text-ink transition-colors"
-          >
-            Our Story
+            About
           </Link>
           <Link
             href="/contact"
@@ -83,18 +76,11 @@ export default function Nav() {
       >
         <nav className="flex flex-col gap-5 pt-6 pb-2 border-t border-line mt-4">
           <Link
-            href="/services"
+            href="/about"
             className="font-body text-[14px] text-taupe hover:text-ink transition-colors"
             onClick={() => setOpen(false)}
           >
-            Services
-          </Link>
-          <Link
-            href="/story"
-            className="font-body text-[14px] text-taupe hover:text-ink transition-colors"
-            onClick={() => setOpen(false)}
-          >
-            Our Story
+            About
           </Link>
           <Link
             href="/contact"

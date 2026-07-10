@@ -92,7 +92,7 @@ export default function ResidentialPage() {
                   clean home shouldn&rsquo;t be one more thing on your list.
                 </p>
                 <div className="mt-8">
-                  <GoldButton href="#estimate">Get your free estimate</GoldButton>
+                  <GoldButton href="/residential/estimate">Get your free estimate</GoldButton>
                 </div>
               </div>
             </div>
@@ -212,8 +212,7 @@ export default function ResidentialPage() {
             Get a free, no-obligation estimate — takes less than two minutes.
           </p>
           <div className="mt-8">
-            {/* TODO: route to residential questionnaire in Prompt 4 */}
-            <GoldButton href="#">Get your free estimate</GoldButton>
+            <GoldButton href="/residential/estimate">Get your free estimate</GoldButton>
           </div>
           <p className="mt-6 font-body text-[13px] !text-cream/50">
             Prefer to talk first? Call{" "}

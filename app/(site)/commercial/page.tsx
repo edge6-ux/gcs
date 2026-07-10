@@ -96,7 +96,7 @@ export default function CommercialPage() {
                   The same standard, every visit, no matter who&rsquo;s on the crew.
                 </p>
                 <div className="mt-8">
-                  <OutlineGoldButton href="#quote" variant="light">
+                  <OutlineGoldButton href="/commercial/estimate" variant="light">
                     Request a quote
                   </OutlineGoldButton>
                 </div>
@@ -251,8 +251,7 @@ export default function CommercialPage() {
             required to start.
           </p>
           <div className="mt-8">
-            {/* TODO: route to commercial questionnaire in Prompt 4 */}
-            <OutlineGoldButton href="#">Request a quote</OutlineGoldButton>
+            <OutlineGoldButton href="/commercial/estimate">Request a quote</OutlineGoldButton>
           </div>
           <p className="mt-6 font-body text-[13px] !text-cream/50">
             Prefer to talk first? Call{" "}
