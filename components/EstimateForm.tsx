@@ -533,7 +533,7 @@ export default function EstimateForm({ variant }: { variant: Variant }) {
   const stepSupport = isResidential
     ? [
         "Choose the service that best fits your home today.",
-        "Recurring visits include a modest placeholder discount.",
+        "Select how frequently you'd like us to visit.",
         "Rough numbers are fine — we'll confirm details on your walkthrough.",
         "This helps us understand what you're looking for.",
         "We'll follow up to schedule your in-person walkthrough.",
