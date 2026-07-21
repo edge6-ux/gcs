@@ -24,7 +24,7 @@ export default function Footer() {
               Gilleland Cleaning Services, LLC
             </p>
             <p className="footer-tagline mt-2 font-body text-[13px] text-white/60 leading-relaxed">
-              Proudly serving the local community
+              Serving Jackson, Hall, and surrounding areas
             </p>
           </div>
 

@@ -24,6 +24,12 @@ export default function Nav() {
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-8">
           <Link
+            href="/"
+            className="font-body text-[13px] text-taupe hover:text-ink transition-colors"
+          >
+            Home
+          </Link>
+          <Link
             href="/about"
             className="font-body text-[13px] text-taupe hover:text-ink transition-colors"
           >
@@ -75,6 +81,13 @@ export default function Nav() {
         }`}
       >
         <nav className="flex flex-col gap-5 pt-6 pb-2 border-t border-line mt-4">
+          <Link
+            href="/"
+            className="font-body text-[14px] text-taupe hover:text-ink transition-colors"
+            onClick={() => setOpen(false)}
+          >
+            Home
+          </Link>
           <Link
             href="/about"
             className="font-body text-[14px] text-taupe hover:text-ink transition-colors"

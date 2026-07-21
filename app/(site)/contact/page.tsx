@@ -44,7 +44,7 @@ export default function ContactPage() {
                 Hours
               </span>
               <p className="mt-2 font-body text-[15px] text-body">
-                Monday – Friday, 9am – 5pm
+                Monday – Thursday, 9am – 5pm
               </p>
             </div>
 
@@ -53,18 +53,7 @@ export default function ContactPage() {
                 Service area
               </span>
               <p className="mt-2 font-body text-[15px] text-body">
-                [service area — placeholder, e.g. &ldquo;Serving Norcross and the
-                greater Atlanta area&rdquo;]
-              </p>
-            </div>
-
-            {/* Many service-area businesses omit a public address — confirm with Shawn before publishing. */}
-            <div className="md:col-span-2">
-              <span className="font-body text-[11px] font-semibold uppercase tracking-[0.14em] text-gold">
-                Address
-              </span>
-              <p className="mt-2 font-body text-[15px] text-body">
-                [business address, if applicable]
+                Jackson, Hall, and surrounding areas
               </p>
             </div>
           </div>
