@@ -17,8 +17,10 @@ export const RESIDENTIAL_PRICING = {
   recurringDiscount: {
     oneTime: 1.0,
     weekly: 0.9,
-    biweekly: 0.95,
+    everyTwoWeeks: 0.95,
+    everyThreeWeeks: 0.96,
     monthly: 0.97,
+    other: 0.97,
   },
 };
 
@@ -37,7 +39,12 @@ export const COMMERCIAL_PRICING = {
 export type ResidentialPricingInput = {
   serviceType: "standard" | "deep";
   frequency: "one-time" | "recurring";
-  recurringInterval?: "weekly" | "biweekly" | "monthly";
+  recurringInterval?:
+    | "weekly"
+    | "everyTwoWeeks"
+    | "everyThreeWeeks"
+    | "monthly"
+    | "other";
   bedrooms: number;
   bathrooms: number;
   sqft: number;

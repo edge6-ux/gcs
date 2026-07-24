@@ -15,7 +15,13 @@ type ResidentialData = {
   serviceType: "" | "standard" | "deep";
   deepCleanNotes: string;
   frequency: "" | "one-time" | "recurring";
-  recurringInterval: "" | "weekly" | "biweekly" | "monthly";
+  recurringInterval:
+    | ""
+    | "weekly"
+    | "everyTwoWeeks"
+    | "everyThreeWeeks"
+    | "monthly"
+    | "other";
   bedrooms: string;
   bathrooms: string;
   sqft: string;
@@ -28,7 +34,7 @@ type ResidentialData = {
 };
 
 type CommercialData = {
-  facilityType: "" | "office" | "retail" | "medical" | "restaurant";
+  facilityType: "" | "office" | "retail" | "medical";
   sqft: string;
   frequency: "" | "oneTime" | "weekly" | "biweekly" | "monthly" | "nightly";
   supplies: "" | "standard" | "specific";
@@ -331,7 +337,12 @@ export default function EstimateForm({ variant }: { variant: Variant }) {
         frequency: residential.frequency,
         recurringInterval:
           residential.frequency === "recurring"
-            ? (residential.recurringInterval as "weekly" | "biweekly" | "monthly")
+            ? (residential.recurringInterval as
+                | "weekly"
+                | "everyTwoWeeks"
+                | "everyThreeWeeks"
+                | "monthly"
+                | "other")
             : undefined,
         bedrooms: Number(residential.bedrooms),
         bathrooms: Number(residential.bathrooms),
@@ -355,8 +366,12 @@ export default function EstimateForm({ variant }: { variant: Variant }) {
   const freqLabelResidential = () => {
     if (residential.frequency === "one-time") return "One-time";
     if (residential.recurringInterval === "weekly") return "Recurring — Weekly";
-    if (residential.recurringInterval === "biweekly") return "Recurring — Bi-weekly";
+    if (residential.recurringInterval === "everyTwoWeeks")
+      return "Recurring — Every Two Weeks";
+    if (residential.recurringInterval === "everyThreeWeeks")
+      return "Recurring — Every Three Weeks";
     if (residential.recurringInterval === "monthly") return "Recurring — Monthly";
+    if (residential.recurringInterval === "other") return "Recurring — Other";
     return "";
   };
 
@@ -383,8 +398,6 @@ export default function EstimateForm({ variant }: { variant: Variant }) {
         return "Retail & Storefront";
       case "medical":
         return "Medical & Professional";
-      case "restaurant":
-        return "Restaurant & Food Service";
       default:
         return "";
     }
@@ -632,8 +645,10 @@ export default function EstimateForm({ variant }: { variant: Variant }) {
                 >
                   <option value="">Select frequency</option>
                   <option value="weekly">Weekly</option>
-                  <option value="biweekly">Bi-weekly</option>
+                  <option value="everyTwoWeeks">Every Two Weeks</option>
+                  <option value="everyThreeWeeks">Every Three Weeks</option>
                   <option value="monthly">Monthly</option>
+                  <option value="other">Other</option>
                 </select>
               </div>
             )}
@@ -760,7 +775,6 @@ export default function EstimateForm({ variant }: { variant: Variant }) {
                 ["office", "Office"],
                 ["retail", "Retail & Storefront"],
                 ["medical", "Medical & Professional"],
-                ["restaurant", "Restaurant & Food Service"],
               ] as const
             ).map(([value, label]) => (
               <SelectCard

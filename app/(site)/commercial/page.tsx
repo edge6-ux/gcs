@@ -25,6 +25,13 @@ const whyGilleland = [
     imageSrc: "/commercial-why-scheduling.png",
     imageAlt: "Desk calendar open to a monthly view beside a notebook and plant",
   },
+  {
+    label: "Licensed & Insured",
+    title: "Licensed & Insured",
+    description: "Fully licensed and insured for your peace of mind.",
+    imageSrc: "/commercial-why-licensed.svg",
+    imageAlt: "Shield with checkmark icon representing licensed and insured status",
+  },
 ];
 
 const facilityTypes = [
@@ -38,11 +45,6 @@ const facilityTypes = [
     name: "Medical & Professional Offices",
     imageSrc: "/commercial-facility-medical.png",
     imageAlt: "Calm, well-kept medical waiting room with upholstered chairs and natural light",
-  },
-  {
-    name: "Restaurants & Food Service",
-    imageSrc: "/commercial-facility-restaurants.png",
-    imageAlt: "Folded microfiber cloth on a clean stainless steel commercial kitchen counter",
   },
 ];
 
@@ -135,7 +137,7 @@ export default function CommercialPage() {
             Built for consistency, not just a clean day.
           </h2>
 
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
+          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             {whyGilleland.map((item) => (
               <article
                 key={item.label}
@@ -180,7 +182,7 @@ export default function CommercialPage() {
             Cleaning for every kind of workspace.
           </h2>
 
-          <div className="mt-12 grid gap-6 md:grid-cols-2">
+          <div className="mt-12 grid gap-6 md:grid-cols-3">
             {facilityTypes.map((facility) => (
               <div
                 key={facility.name}
@@ -228,8 +230,8 @@ export default function CommercialPage() {
 
           <div className="mt-14 grid gap-10 md:grid-cols-3 md:gap-8">
             {steps.map((step, index) => (
-              <div key={step.title} className="text-center md:text-left">
-                <div className="mx-auto mb-3 flex h-[55px] items-end justify-center md:mx-0 md:justify-start">
+              <div key={step.title} className="text-center">
+                <div className="mx-auto mb-3 flex h-[55px] items-end justify-center">
                   {"iconSrc" in step && step.iconSrc ? (
                     <img
                       src={step.iconSrc}

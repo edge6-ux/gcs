@@ -1,4 +1,6 @@
 import GoldButton from "@/components/GoldButton";
+import TestimonialCarousel from "@/components/TestimonialCarousel";
+import { featuredTestimonials } from "@/lib/testimonials";
 
 const trustPoints = [
   {
@@ -24,6 +26,12 @@ const trustPoints = [
     description: "Cleaning that fits your calendar — not the other way around.",
     iconSrc: "/residential-icon-scheduling.png",
     iconAlt: "Calendar and clock icon for flexible scheduling",
+  },
+  {
+    label: "Licensed & Insured",
+    description: "Fully licensed and insured for your peace of mind.",
+    iconSrc: "/residential-icon-licensed.svg",
+    iconAlt: "Shield with checkmark icon representing licensed and insured status",
   },
 ];
 
@@ -66,7 +74,7 @@ const steps = [
   {
     title: "2. We confirm the details",
     description:
-      "A quick call or virtual walkthrough — whatever's easiest for you.",
+      "We'll confirm the details in person before your first clean.",
     iconSrc: "/residential-step-confirm.png",
     iconAlt: "Clipboard with checkmark icon",
   },
@@ -122,14 +130,14 @@ export default function ResidentialPage() {
 
       {/* Section B — Trust strip */}
       <section className="bg-stone py-10 px-6 md:px-12">
-        <div className="mx-auto grid max-w-5xl gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-x-14 lg:gap-y-8">
+        <div className="mx-auto grid max-w-5xl gap-8 sm:grid-cols-2 lg:grid-cols-5 lg:gap-x-10 lg:gap-y-8">
           {trustPoints.map((point) => (
-            <div key={point.label} className="text-center md:text-left">
+            <div key={point.label} className="text-center">
               {"iconSrc" in point && point.iconSrc && (
                 <img
                   src={point.iconSrc}
                   alt={point.iconAlt ?? ""}
-                  className="mx-auto mb-3 h-10 w-10 brightness-0 md:mx-0"
+                  className="mx-auto mb-3 h-10 w-10 brightness-0"
                 />
               )}
               <p className="font-body text-[14px] font-medium text-ink">
@@ -186,18 +194,9 @@ export default function ResidentialPage() {
         </div>
       </section>
 
-      {/* Section D — Trust quote */}
+      {/* Section D — Trust quote carousel */}
       <section className="bg-cream px-6 py-20 md:px-12">
-        <div className="mx-auto flex max-w-2xl flex-col items-center text-center">
-          <div className="mb-10 h-[1px] w-14 bg-gold" aria-hidden="true" />
-          <blockquote className="font-display text-[20px] font-normal italic leading-relaxed text-ink md:text-[22px]">
-            &ldquo;My home has never been cleaner and fresher. I would recommend
-            them to my friends and family in a heartbeat.&rdquo;
-          </blockquote>
-          <cite className="mt-6 font-body text-[13px] not-italic text-taupe">
-            — A longtime client
-          </cite>
-        </div>
+        <TestimonialCarousel testimonials={featuredTestimonials} />
       </section>
 
       {/* Section E — How it works */}
@@ -210,8 +209,8 @@ export default function ResidentialPage() {
 
           <div className="mt-14 grid gap-10 md:grid-cols-3 md:gap-8">
             {steps.map((step, index) => (
-              <div key={step.title} className="text-center md:text-left">
-                <div className="mx-auto mb-3 flex h-[55px] items-end justify-center md:mx-0 md:justify-start">
+              <div key={step.title} className="text-center">
+                <div className="mx-auto mb-3 flex h-[55px] items-end justify-center">
                   {"iconSrc" in step && step.iconSrc ? (
                     <img
                       src={step.iconSrc}

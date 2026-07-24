@@ -36,6 +36,12 @@ export default function Nav() {
             About
           </Link>
           <Link
+            href="/reviews"
+            className="font-body text-[13px] text-taupe hover:text-ink transition-colors"
+          >
+            Reviews
+          </Link>
+          <Link
             href="/contact"
             className="font-body text-[13px] text-taupe hover:text-ink transition-colors"
           >
@@ -94,6 +100,13 @@ export default function Nav() {
             onClick={() => setOpen(false)}
           >
             About
+          </Link>
+          <Link
+            href="/reviews"
+            className="font-body text-[14px] text-taupe hover:text-ink transition-colors"
+            onClick={() => setOpen(false)}
+          >
+            Reviews
           </Link>
           <Link
             href="/contact"

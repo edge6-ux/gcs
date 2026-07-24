@@ -10,7 +10,13 @@ export type ResidentialSubmission = {
   serviceType: "standard" | "deep";
   deepCleanNotes: string;
   frequency: "one-time" | "recurring";
-  recurringInterval: "weekly" | "biweekly" | "monthly" | "";
+  recurringInterval:
+    | "weekly"
+    | "everyTwoWeeks"
+    | "everyThreeWeeks"
+    | "monthly"
+    | "other"
+    | "";
   bedrooms: string;
   bathrooms: string;
   sqft: string;
@@ -24,7 +30,7 @@ export type ResidentialSubmission = {
 };
 
 export type CommercialSubmission = {
-  facilityType: "office" | "retail" | "medical" | "restaurant";
+  facilityType: "office" | "retail" | "medical";
   sqft: string;
   frequency: "oneTime" | "weekly" | "biweekly" | "monthly" | "nightly";
   supplies: "standard" | "specific";
@@ -51,8 +57,12 @@ function serviceLabel(value: ResidentialSubmission["serviceType"]) {
 function freqLabelResidential(data: ResidentialSubmission) {
   if (data.frequency === "one-time") return "One-time";
   if (data.recurringInterval === "weekly") return "Recurring — Weekly";
-  if (data.recurringInterval === "biweekly") return "Recurring — Bi-weekly";
+  if (data.recurringInterval === "everyTwoWeeks")
+    return "Recurring — Every Two Weeks";
+  if (data.recurringInterval === "everyThreeWeeks")
+    return "Recurring — Every Three Weeks";
   if (data.recurringInterval === "monthly") return "Recurring — Monthly";
+  if (data.recurringInterval === "other") return "Recurring — Other";
   return "Recurring";
 }
 
@@ -77,8 +87,6 @@ function facilityLabel(value: CommercialSubmission["facilityType"]) {
       return "Retail & Storefront";
     case "medical":
       return "Medical & Professional";
-    case "restaurant":
-      return "Restaurant & Food Service";
   }
 }
 
