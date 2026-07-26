@@ -33,6 +33,13 @@ const trustPoints = [
     iconSrc: "/residential-icon-licensed.svg",
     iconAlt: "Shield with checkmark icon representing licensed and insured status",
   },
+  {
+    label: "Organic Cleaning Products",
+    description:
+      "Now offering organic supplies as an option — safe for kids and pets, just ask.",
+    iconSrc: "/residential-icon-organic.svg",
+    iconAlt: "Leaf icon representing organic cleaning products",
+  },
 ];
 
 const services = [
@@ -130,7 +137,7 @@ export default function ResidentialPage() {
 
       {/* Section B — Trust strip */}
       <section className="bg-stone py-10 px-6 md:px-12">
-        <div className="mx-auto grid max-w-5xl gap-8 sm:grid-cols-2 lg:grid-cols-5 lg:gap-x-10 lg:gap-y-8">
+        <div className="mx-auto grid max-w-4xl gap-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-14 lg:gap-y-10">
           {trustPoints.map((point) => (
             <div key={point.label} className="text-center">
               {"iconSrc" in point && point.iconSrc && (
