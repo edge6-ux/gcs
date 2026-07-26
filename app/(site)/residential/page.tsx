@@ -30,7 +30,7 @@ const trustPoints = [
   {
     label: "Licensed & Insured",
     description: "Fully licensed and insured for your peace of mind.",
-    iconSrc: "/shield2.png",
+    iconSrc: "/residential-icon-licensed.svg",
     iconAlt: "Shield with checkmark icon representing licensed and insured status",
   },
   {

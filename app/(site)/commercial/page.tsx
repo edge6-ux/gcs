@@ -29,7 +29,7 @@ const whyGilleland = [
     label: "Licensed & Insured",
     title: "Licensed & Insured",
     description: "Fully licensed and insured for your peace of mind.",
-    imageSrc: "/shield.png",
+    imageSrc: "/shield2.png",
     imageAlt: "Shield with checkmark icon representing licensed and insured status",
   },
 ];
