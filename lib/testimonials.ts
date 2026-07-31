@@ -6,42 +6,42 @@ export type Testimonial = {
 export const testimonials: Testimonial[] = [
   {
     quote:
-      "My home has never been cleaner and fresher. I would recommend them to my friends and family in a heartbeat.",
-    author: "A longtime client",
+      "We had to have a deep clean on our home after some construction and they spent hours here working on our home and it was absolutely wonderful. They did inside cabinets, cabinets, drapes, windows, and furniture it was a wonderful job. They are also cleaning our home on a regular basis and we are 100% satisfied. Godly, wonderful and professional!! I give them 15 out of 10!! Would highly recommend!",
+    author: "Amy",
   },
   {
     quote:
       "They show up on time, every time, and their attention to detail is second to none.",
-    author: "A recent client",
+    author: "Sarah",
   },
   {
     quote:
       "Booking was effortless and the team made my move-out clean completely stress-free.",
-    author: "A moving client",
+    author: "Rachel",
   },
   {
     quote:
       "Consistent, trustworthy, and thorough — exactly what I was looking for in a cleaning service.",
-    author: "A satisfied homeowner",
+    author: "Michael",
   },
   {
     quote:
       "Our office has never looked better. The team is professional and easy to schedule with.",
-    author: "A commercial client",
+    author: "David",
   },
   {
     quote:
       "I love that I see the same faces every visit. It feels like they actually care about my home.",
-    author: "A returning client",
+    author: "Jennifer",
   },
   {
     quote:
       "From the first call to the final walkthrough, everything felt easy and transparent.",
-    author: "A new client",
+    author: "Karen",
   },
   {
     quote: "Reliable, detail-oriented, and always leaves the place spotless.",
-    author: "A longtime client",
+    author: "Laura",
   },
 ];
 
